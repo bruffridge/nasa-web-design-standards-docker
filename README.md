@@ -2,8 +2,8 @@
 
 1. Install Docker
 2. Clone this repo to your machine
-3. Clone web-design-standards to your machine
-4. Clone web-design-standards-docs to your machine
+3. Clone [bruffridge/web-design-standards](https://github.com/bruffridge/web-design-standards) to your machine
+4. Clone [bruffridge/web-design-standards-docs](https://github.com/bruffridge/web-design-standards-docs) to your machine
 5. Open a bash terminal and `cd` to the location of this repo you cloned.
 6. Build the docker image from the Dockerfile: `docker build -t nasawds .`
 7. change start script in /path/to/web-design-standards-docs/package.json to `bundle exec jekyll serve --host 0.0.0.0`
