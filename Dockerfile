@@ -88,4 +88,10 @@ RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 
 RUN /bin/bash -c 'npm install --global gulp-cli'
 
+### Install zip
+
+RUN apt-get update \
+  && apt-get install -y zip \
+  && apt-get install -y unzip
+
 EXPOSE 4000
