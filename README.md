@@ -7,7 +7,7 @@
 5. Clone [bruffridge/web-design-standards-docs](https://github.com/bruffridge/web-design-standards-docs) into `nasawds/web-design-standards-docs`
 
     ### (Optional) If you want to update [GitHub pages](https://github.com/bruffridge/web-design-standards-docs/tree/gh-pages) follow these steps, otherwise skip to step 6.
-    6. Copy the ssh private key you use for your GitHub account into `nasawds`
+    6. Copy the ssh private key you use for your GitHub account into `nasawds` Ex. `cp ~/.ssh/id_rsa /path/to/nasawds`
     7. Follow the instructions in the `config gh-pages:` comments in `Dockerfile` and `init.sh` and save the files.
 
 8. Open a bash terminal and `cd` to `nasawds`
