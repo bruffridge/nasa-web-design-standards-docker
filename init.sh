@@ -6,4 +6,16 @@ set -e
 #ssh-add ~/.ssh/id_rsa
 # enter your ssh key passphrase if set.
 
+if [ "$1" = 'init' ]; then
+  cd /apps/web-design-standards/
+  npm install
+  npm run build:package
+  npm link
+
+  cd /apps/web-design-standards-docs/
+  npm install
+  npm link uswds
+  npm run build
+fi
+
 exec bash

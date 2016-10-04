@@ -2,17 +2,17 @@
 
 1. Install Docker
 2. Create a folder for this project. Let's call it `nasawds`
-3. Download and extract the files in this repo into `nasawds`
-4. Clone [bruffridge/web-design-standards](https://github.com/bruffridge/web-design-standards) into `nasawds/web-design-standards`
-5. Clone [bruffridge/web-design-standards-docs](https://github.com/bruffridge/web-design-standards-docs) into `nasawds/web-design-standards-docs`
+3. Clone or download this repo into `nasawds`
+4. Clone [bruffridge/web-design-standards](https://github.com/bruffridge/web-design-standards) to your machine
+5. Clone [bruffridge/web-design-standards-docs](https://github.com/bruffridge/web-design-standards-docs) to your machine
+6. Open a bash terminal and `cd` to `nasawds`
 
-    ### (Optional) If you want to update [GitHub pages](https://github.com/bruffridge/web-design-standards-docs/tree/gh-pages) follow these steps, otherwise skip to step 6.
-    6. Copy the ssh private key you use for your GitHub account into `nasawds`
+    ### (Optional) If you want to update [GitHub pages](https://github.com/bruffridge/web-design-standards-docs/tree/gh-pages) follow these steps, otherwise skip to step 7.
+    6. Copy the ssh private key you use for your GitHub account into `nasawds` Ex. `cp ~/.ssh/id_rsa .`
     7. Follow the instructions in the `config gh-pages:` comments in `Dockerfile` and `init.sh` and save the files.
 
-8. Open a bash terminal and `cd` to `nasawds`
 9. Build the docker image from the Dockerfile: `docker build -t nasawds .`
-10. Run the container: `docker run -it -p 127.0.0.1:4000:4000 -v /path/to/nasawds/web-design-standards-docs:/apps/web-design-standards-docs -v /path/to/nasawds/web-design-standards:/apps/web-design-standards nasawds`
+10. Run the container and install and build the standards and docs: `docker run -it -p 127.0.0.1:4000:4000 -v /path/to/web-design-standards-docs:/apps/web-design-standards-docs -v /path/to/web-design-standards:/apps/web-design-standards nasawds init` The `init` argument is only needed once. The next time the container is run `init` will not be needed. If for some reason you get kicked off of the container you can reconnect by getting the id of the running container `docker ps` then `docker exec -it your_container_id bash`
 11. Start the server: `cd /apps/web-design-standards-docs` then `npm start`
 12. Open another terminal window/tab
 13. Find your running container id: `docker ps`

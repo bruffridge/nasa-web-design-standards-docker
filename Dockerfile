@@ -101,18 +101,6 @@ RUN apt-get update \
 
 ## Install the standards and docs
 
-COPY web-design-standards /apps/web-design-standards/
-WORKDIR /apps/web-design-standards/
-RUN npm install \
-  && npm run build:package \
-  && npm link
-
-COPY web-design-standards-docs /apps/web-design-standards-docs/
-WORKDIR /apps/web-design-standards-docs/
-RUN npm install \
-  && npm link uswds \
-  && npm run build
-
 EXPOSE 4000
 
 COPY ./init.sh /
