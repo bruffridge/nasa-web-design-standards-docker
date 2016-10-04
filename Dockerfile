@@ -94,4 +94,27 @@ RUN apt-get update \
   && apt-get install -y zip \
   && apt-get install -y unzip
 
+# config gh-pages: uncomment the next three lines and set git config name and email if you wish to deploy site to github pages gh-pages branch.
+#COPY id_rsa /root/.ssh/
+#RUN git config --global user.email "youremail@youremail.com" \
+#  && git config --global user.name "Your Name"
+
+## Install the standards and docs
+
+COPY web-design-standards /apps/web-design-standards/
+WORKDIR /apps/web-design-standards/
+RUN npm install \
+  && npm run build:package \
+  && npm link
+
+COPY web-design-standards-docs /apps/web-design-standards-docs/
+WORKDIR /apps/web-design-standards-docs/
+RUN npm install \
+  && npm link uswds \
+  && npm run build
+
 EXPOSE 4000
+
+COPY ./init.sh /
+RUN chmod +x /init.sh
+ENTRYPOINT ["/init.sh"]
