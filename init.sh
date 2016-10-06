@@ -26,14 +26,6 @@ elif [ "$1" = 'start' ]; then
   cd /apps/web-design-standards-docs/
   echo "*-*-*-* Linking Standards to Docs *-*-*-*"
   npm link uswds
-  echo "*-*-*-* Installing Ruby Gems *-*-*-*"
-  npm run prestart
-  cd /apps/web-design-standards/
-  echo "*-*-*-* Watching Standards *-*-*-*"
-  npm run watch &
-  cd /apps/web-design-standards-docs/
-  echo "*-*-*-* Watching Docs *-*-*-*"
-  npm run watch &
   echo "*-*-*-* Starting Node Server *-*-*-*"
   npm start
 else
