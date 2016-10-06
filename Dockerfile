@@ -105,4 +105,5 @@ EXPOSE 4000
 
 COPY ./init.sh /
 RUN chmod +x /init.sh
+CMD ["start"]
 ENTRYPOINT ["/init.sh"]
