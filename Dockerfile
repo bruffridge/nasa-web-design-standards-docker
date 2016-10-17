@@ -101,6 +101,11 @@ RUN apt-get update \
 
 ## Install the standards and docs
 
+## Install VIM
+
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "vim"]
+
 EXPOSE 4000
 
 COPY ./init.sh /

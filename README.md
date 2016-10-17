@@ -9,7 +9,7 @@
 
     ### (Optional) If you want to update [GitHub pages](https://github.com/bruffridge/web-design-standards-docs/tree/gh-pages) follow these steps, otherwise skip to step 7.
     6. Copy the ssh private key you use for your GitHub account into `nasawds` Ex. `cp ~/.ssh/id_rsa .`
-    7. Follow the instructions in the `config gh-pages:` comments in `Dockerfile` and `init.sh` and save the files.
+    7. Follow the instructions in the `config gh-pages:` comments in `Dockerfile` and save the file.
 
 9. Build the docker image from the Dockerfile: `docker build -t nasawds .`
 10. Install and build the standards and docs: `docker run -it -v /path/to/web-design-standards-docs:/apps/web-design-standards-docs -v /path/to/web-design-standards:/apps/web-design-standards nasawds init`
@@ -21,3 +21,22 @@
 16. Open another terminal window/tab
 17. Run `watch` on docs: `docker exec -it `docker ps -q -l` bash -c 'cd /apps/web-design-standards-docs; echo "*-*-*-* Watching Docs *-*-*-*"; npm run watch'`
 18. That's It! Make changes to the standards or docs source files and the jekyll site running on http://127.0.0.1:4000/web-design-standards-docs/ will be updated automatically. Just refresh your browser to see the changes.
+
+## Update web-design-standards-docs gh-pages
+Open another terminal window/tab
+`docker exec -it `docker ps -q -l` bash -c 'eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa; cd /apps/web-design-standards-docs; gulp deploy; ssh-agent -k'`
+
+## Other helpful docker commands
+
+### Stop latest container
+docker stop `docker ps -q -l`
+
+### Remove all stopped containers
+docker rm $(docker ps -a -q)
+
+## To batch change the color of .svg files
+
+`cd /path/to/web-design-standards/src/img`
+`for f in *.svg; do sed -e 's/fill="#205493"/fill="#1d4893"/' -i "" "$f" ; done`
+`for f in *.svg; do sed -e 's/fill="#0071bc"/fill="#105bd8"/' -i "" "$f" ; done`
+`for f in *.svg; do sed -e 's/fill="#5b616b"/fill="#5b606b"/' -i "" "$f" ; done`
