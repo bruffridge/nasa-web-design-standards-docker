@@ -17,26 +17,26 @@
 12. `Ctrl+C` to stop the server
 13. Next time you want to start the server: `` docker start -ai `docker ps -q -l` ``
 14. Open another terminal window/tab
-15. Run `watch` on standards: `docker exec -it `docker ps -q -l` bash -c 'cd /apps/web-design-standards; echo "*-*-*-* Watching Standards *-*-*-*"; npm run watch'`
+15. Run `watch` on standards: `` docker exec -it `docker ps -q -l` bash -c 'cd /apps/web-design-standards; echo "*-*-*-* Watching Standards *-*-*-*"; npm run watch' ``
 16. Open another terminal window/tab
-17. Run `watch` on docs: `docker exec -it `docker ps -q -l` bash -c 'cd /apps/web-design-standards-docs; echo "*-*-*-* Watching Docs *-*-*-*"; npm run watch'`
+17. Run `watch` on docs: `` docker exec -it `docker ps -q -l` bash -c 'cd /apps/web-design-standards-docs; echo "*-*-*-* Watching Docs *-*-*-*"; npm run watch' ``
 18. That's It! Make changes to the standards or docs source files and the jekyll site running on http://127.0.0.1:4000/web-design-standards-docs/ will be updated automatically. Just refresh your browser to see the changes.
 
 ## Update web-design-standards-docs gh-pages
 Open another terminal window/tab
-`docker exec -it `docker ps -q -l` bash -c 'eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa; cd /apps/web-design-standards-docs; gulp deploy; ssh-agent -k'`
+`` docker exec -it `docker ps -q -l` bash -c 'eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa; cd /apps/web-design-standards-docs; gulp deploy; ssh-agent -k' ``
 
 ## Other helpful docker commands
 
 ### Stop latest container
-docker stop `docker ps -q -l`
+`` docker stop `docker ps -q -l` ``
 
 ### Remove all stopped containers
-docker rm $(docker ps -a -q)
+`` docker rm $(docker ps -a -q) ``
 
 ## To batch change the color of .svg files
 
-`cd /path/to/web-design-standards/src/img`
-`for f in *.svg; do sed -e 's/fill="#205493"/fill="#1d4893"/' -i "" "$f" ; done`
-`for f in *.svg; do sed -e 's/fill="#0071bc"/fill="#105bd8"/' -i "" "$f" ; done`
-`for f in *.svg; do sed -e 's/fill="#5b616b"/fill="#5b606b"/' -i "" "$f" ; done`
+`cd /path/to/web-design-standards/src/img`  
+`for f in *.svg; do sed -e 's/fill="#205493"/fill="#1d4893"/' -i "" "$f" ; done`  
+`for f in *.svg; do sed -e 's/fill="#0071bc"/fill="#105bd8"/' -i "" "$f" ; done`  
+`for f in *.svg; do sed -e 's/fill="#5b616b"/fill="#5b606b"/' -i "" "$f" ; done`  
