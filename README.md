@@ -26,6 +26,13 @@
 Open another terminal window/tab
 `` docker exec -it `docker ps -q -l` bash -c 'eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa; cd /apps/web-design-standards-docs; gulp deploy; ssh-agent -k' ``
 
+## Merge upstream changes using SourceTree
+1. Add a remote for 18F/web-design-standards  
+Name: `upstream`  
+URL: `git@github.com:18F/web-design-standards.git`
+2. In the left side bar under REMOTES right-click on staging and select "Pull upstream/staging into staging"
+3. In the left side bar click "File status". Resolve any merge conflicts, commit, and push to origin/staging.
+
 ## Other helpful docker commands
 
 ### Stop latest container
