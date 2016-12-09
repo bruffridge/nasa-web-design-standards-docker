@@ -1,7 +1,7 @@
 
 FROM buildpack-deps:jessie
 
-### Install Node 4.5.0
+### Install Node 4.7.0
 
 # gpg keys listed at https://github.com/nodejs/node
 RUN set -ex \
@@ -19,7 +19,7 @@ RUN set -ex \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 4.5.0
+ENV NODE_VERSION 4.7.0
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
@@ -29,7 +29,7 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
-### Install Ruby 2.2.5
+### Install Ruby 2.2.6
 
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
@@ -39,9 +39,9 @@ RUN mkdir -p /usr/local/etc \
 	} >> /usr/local/etc/gemrc
 
 ENV RUBY_MAJOR 2.2
-ENV RUBY_VERSION 2.2.5
-ENV RUBY_DOWNLOAD_SHA256 30c4b31697a4ca4ea0c8db8ad30cf45e6690a0f09687e5d483c933c03ca335e3
-ENV RUBYGEMS_VERSION 2.6.6
+ENV RUBY_VERSION 2.2.6
+ENV RUBY_DOWNLOAD_SHA256 de8e192791cb157d610c48a9a9ff6e7f19d67ce86052feae62b82e3682cc675f
+ENV RUBYGEMS_VERSION 2.6.8
 
 # some of ruby's build scripts are written in ruby
 # we purge this later to make sure our final image uses what we just built
@@ -69,7 +69,7 @@ RUN set -ex \
 	&& gem update --system $RUBYGEMS_VERSION \
 	&& rm -r /usr/src/ruby
 
-ENV BUNDLER_VERSION 1.13.1
+ENV BUNDLER_VERSION 1.13.6
 
 RUN gem install bundler --version "$BUNDLER_VERSION"
 
